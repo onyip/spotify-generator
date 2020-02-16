@@ -38,13 +38,23 @@ class Spotify extends CI_Controller {
 					];
 					$send = $this->curl->simple_post('https://spclient.wg.spotify.com:443/signup/public/v1/account/', $get_user, array(CURLOPT_BUFFERSIZE => 10));
 					$hasil = json_decode($send);
-					if ($hasil->status == 1) {
+					switch ($hasil->status) {
+						case 1:
 						$val = ['email' => $mail." : ".$data['password'], 'status' => 1];
 						$result[] = $val;
-					}else{
+						break;
+
+						case 20:
+						$val = ['email' => $mail, 'status' => 2];
+						$result[] = $val;
+						break;
+
+						default:
 						$val = ['email' => $mail." : ".$data['password'], 'status' => 0];
 						$result[] = $val;;
+						break;
 					}
+					
 				}
 
 			} else {
@@ -65,12 +75,21 @@ class Spotify extends CI_Controller {
 				];
 				$send = $this->curl->simple_post('https://spclient.wg.spotify.com:443/signup/public/v1/account/', $get_user, array(CURLOPT_BUFFERSIZE => 10));
 				$hasil = json_decode($send);
-				if ($hasil->status == 1) {
+				switch ($hasil->status) {
+					case 1:
 					$val = ['email' => $mail." : ".$data['password'], 'status' => 1];
 					$result[] = $val;
-				}else{
-					$val = ['email' => $mail." : ".$data['password'], 'status' => 0];
+					break;
+
+					case 20:
+					$val = ['email' => $mail, 'status' => 2];
 					$result[] = $val;
+					break;
+
+					default:
+					$val = ['email' => $mail." : ".$data['password'], 'status' => 0];
+					$result[] = $val;;
+					break;
 				}
 			}
 

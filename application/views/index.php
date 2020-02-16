@@ -130,11 +130,14 @@
                         <td class="text-center"><?=$i++?></td>
                         <td><?=$v['email']?></td>
                         <td class="text-center">
+
                           <?php if ($v['status'] == 1): ?>
                             <span class="badge badge-success">Success</span>
-                            <?php else: ?>
-                              <span class="badge badge-danger">Failed</span>
-                            <?php endif ?>
+                          <?php elseif ($v['status'] == 2): ?>
+                            <span class="badge badge-info">Alredy</span>
+                          <?php else : ?>
+                            <span class="badge badge-danger">Failed</span>
+                          <?php endif ?>
                           </td>
                         </tr>
                       <?php endforeach ?>
