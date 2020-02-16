@@ -38,6 +38,16 @@
   <script src="<?=base_url()?>assets/demo/demo.js"></script>
   <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
   <script src="<?=base_url()?>assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
+  <style type="text/css">
+    @media only screen and (max-width:500px) {
+      /* For mobile phones: */
+
+      .desktop {
+        display: none;
+      }
+
+    }
+  </style>
   <script>
     $(document).ready(function() {
       blackKit.initDatePicker();
@@ -187,7 +197,7 @@
                 <div class="col-sm-6 col-lg-3">
                   <div class="form-group">
                     <input required type="Password" name="password" value="" class="form-control" placeholder="Password" minlength="6"/>
-                  <i class="text-primary">Min length is 6.</i><br>
+                    <i class="text-primary">Min length is 6.</i><br>
                   </div>
                 </div>  
               </div><br>
